@@ -1,6 +1,5 @@
 # flutter_quizz
-
-A new Flutter project.
+Pequeno projeto de perguntas e respostas
 
 ## Getting Started
 
