@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './quest.dart';
 import './answer.dart';
+import './result.dart';
 
 main() => runApp(new PerguntaApp());
 
@@ -50,7 +51,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
             Question(_questions[_selectedQuestion]['text']),
             ...answers.map((text) => Answer(text, _answer)).toList(),
           ],
-        ) : null,
+        ) : Result()
       ),
     );
   }
