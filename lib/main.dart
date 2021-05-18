@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './quest.dart';
-import './answer.dart';
 import './result.dart';
+import './quiz.dart';
 
-main() => runApp(new PerguntaApp());
+main() => runApp(PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _selectedQuestion = 0;
-
   final _questions = const [
     {
       'text': 'Qual é a sua cor favorita?',
@@ -30,28 +28,26 @@ class _PerguntaAppState extends State<PerguntaApp> {
     });
   }
 
-  bool get selectedQuestion {
+  bool get haveQuestionSelected {
     return _selectedQuestion < _questions.length;
   }
 
+
   @override
   Widget build(BuildContext context) {
-    
-    List<String> answers = selectedQuestion
-    ?_questions[_selectedQuestion]['answer']
-    :null;
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('Perguntas'),
         ),
-        body: selectedQuestion ? Column(
-          children: <Widget>[
-            Question(_questions[_selectedQuestion]['text']),
-            ...answers.map((text) => Answer(text, _answer)).toList(),
-          ],
-        ) : Result()
+        body: haveQuestionSelected
+          ? Quiz(
+            questions: _questions,
+            selectedQuestion: _selectedQuestion,
+            answer: _answer,
+          )
+          : Result(),
       ),
     );
   }
