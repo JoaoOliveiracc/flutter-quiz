@@ -3,29 +3,50 @@ import 'package:flutter/material.dart';
 import './result.dart';
 import './quiz.dart';
 
-main() => runApp(PerguntaApp());
+main() => runApp(QuestionApp());
 
-class _PerguntaAppState extends State<PerguntaApp> {
+class _QuestionAppState extends State<QuestionApp> {
   var _selectedQuestion = 0;
+  var _pontuacaoTotal = 0;
   final _questions = const [
     {
       'text': 'Qual é a sua cor favorita?',
-      'answer': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+      'answer': [
+        {'text': 'Preto',    'punctuation': 10},
+        {'text': 'Vermelho', 'punctuation': 6},
+        {'text': 'Verde',    'punctuation': 4},
+        {'text': 'Branco',   'punctuation': 8},
+      ],
     },
     {
       'text': 'Qual é o seu animal favorito?',
-      'answer': ['Elefante', 'Leão', 'Coelho', 'Cobra'],
+      'answer': [
+        {'text': 'Leão',     'punctuation': 7},
+        {'text': 'Elefante', 'punctuation': 5},
+        {'text': 'Jacaré',   'punctuation': 10},
+        {'text': 'Panda',    'punctuation': 8},
+      ],
     },
     {
       'text': 'Qual time você torce?',
-      'answer': ['São Paulo', 'Flamengo', 'Palmeiras', 'Internacioanl'],
+      'answer': [
+        {'text': 'Flamengo',   'punctuation': 10},
+        {'text': 'São Paulo',  'punctuation': 8},
+        {'text': 'Santos',     'punctuation': 3},
+        {'text': 'Palmeiras',  'punctuation': 6},
+      ],
     }
   ];
 
-  void _answer() {
-    setState(() {
-      _selectedQuestion++;
-    });
+  void _answer(int pontuacao) {
+    if(haveQuestionSelected) {
+      setState(() {
+        _selectedQuestion++;
+        _pontuacaoTotal += pontuacao;
+      });
+    }
+
+    print(_pontuacaoTotal);
   }
 
   bool get haveQuestionSelected {
@@ -53,10 +74,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
   }
 }
 
-class PerguntaApp extends StatefulWidget{
+class QuestionApp extends StatefulWidget{
   @override
-  _PerguntaAppState createState() {
-    return _PerguntaAppState();
+  _QuestionAppState createState() {
+    return _QuestionAppState();
   }
 
 }
