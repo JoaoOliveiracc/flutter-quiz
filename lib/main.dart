@@ -8,6 +8,7 @@ main() => runApp(QuestionApp());
 class _QuestionAppState extends State<QuestionApp> {
   var _selectedQuestion = 0;
   var _pontuacaoTotal = 0;
+
   final _questions = const [
     {
       'text': 'Qual a linguagem de programação mais popular do mundo?',
@@ -38,15 +39,20 @@ class _QuestionAppState extends State<QuestionApp> {
     }
   ];
 
-  void _answer(int pontuacao) {
+  void _answer(int punctuation) {
     if(haveQuestionSelected) {
       setState(() {
         _selectedQuestion++;
-        _pontuacaoTotal += pontuacao;
+        _pontuacaoTotal += punctuation;
       });
     }
+  }
 
-    print(_pontuacaoTotal);
+  void _restartQuiz() {
+    setState(()  {
+      _selectedQuestion = 0;
+      _pontuacaoTotal = 0;
+    });
   }
 
   bool get haveQuestionSelected {
@@ -68,7 +74,7 @@ class _QuestionAppState extends State<QuestionApp> {
             selectedQuestion: _selectedQuestion,
             answer: _answer,
           )
-          : Result(_pontuacaoTotal),
+          : Result(_pontuacaoTotal, _restartQuiz),
       ),
     );
   }

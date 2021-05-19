@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class Result extends StatelessWidget {
 
   final int punctuation;
+  final void Function() whenRestartingQuiz;
 
-  Result(this.punctuation);
+  Result(this.punctuation, this.whenRestartingQuiz);
 
   String get resultMessage {
     if(punctuation < 8) {
@@ -20,11 +21,24 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text(
-          resultMessage,
-          style: TextStyle(fontSize: 28),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Center(
+          child: Text(
+            resultMessage,
+            style: TextStyle(fontSize: 28),
+          )
+        ),
+        FlatButton(
+          onPressed: whenRestartingQuiz,
+          child: Text(
+            'Reinciar',
+            style: TextStyle(fontSize: 18),
+          ),
+          textColor: Colors.blue,
         )
+      ],
     );
   }
 }
