@@ -10,30 +10,30 @@ class _QuestionAppState extends State<QuestionApp> {
   var _pontuacaoTotal = 0;
   final _questions = const [
     {
-      'text': 'Qual é a sua cor favorita?',
+      'text': 'Qual a linguagem de programação mais popular do mundo?',
       'answer': [
-        {'text': 'Preto',    'punctuation': 10},
-        {'text': 'Vermelho', 'punctuation': 6},
-        {'text': 'Verde',    'punctuation': 4},
-        {'text': 'Branco',   'punctuation': 8},
+        {'text': 'Java',    'punctuation': 3},
+        {'text': 'C#', 'punctuation': 3},
+        {'text': 'PHP',    'punctuation': 3},
+        {'text': 'JavaScript',   'punctuation': 9},
       ],
     },
     {
-      'text': 'Qual é o seu animal favorito?',
+      'text': 'O que é o SaaS em computação na nuvem?',
       'answer': [
-        {'text': 'Leão',     'punctuation': 7},
-        {'text': 'Elefante', 'punctuation': 5},
-        {'text': 'Jacaré',   'punctuation': 10},
-        {'text': 'Panda',    'punctuation': 8},
+        {'text': 'Software como um serviço',     'punctuation': 15},
+        {'text': 'infraestrutura como serviço', 'punctuation': 4},
+        {'text': 'O serviço é a plataforma',   'punctuation': 5},
+        {'text': 'Todas as opções',    'punctuation': 1},
       ],
     },
     {
-      'text': 'Qual time você torce?',
+      'text': 'O que é o GIT?',
       'answer': [
-        {'text': 'Flamengo',   'punctuation': 10},
-        {'text': 'São Paulo',  'punctuation': 8},
-        {'text': 'Santos',     'punctuation': 3},
-        {'text': 'Palmeiras',  'punctuation': 6},
+        {'text': 'Editor de texto',   'punctuation': 2},
+        {'text': 'IDE',  'punctuation': 3},
+        {'text': 'Sistema de controle de versões',     'punctuation': 10},
+        {'text': 'Editor de imagens',  'punctuation': 2},
       ],
     }
   ];
@@ -68,7 +68,7 @@ class _QuestionAppState extends State<QuestionApp> {
             selectedQuestion: _selectedQuestion,
             answer: _answer,
           )
-          : Result(),
+          : Result(_pontuacaoTotal),
       ),
     );
   }
